@@ -19,9 +19,11 @@
         </div>
 
         <div class="form-group">
-          <label>密码: </label>
+          <label>密码: <a href="{{ route('password.request')}}">忘记密码</a></label>
           <input type="password" name="password" class="form-control" value="{{ old('password') }}">
         </div>
+
+
         <div class="form-group">
           <div class="form-check">
             <input type="checkbox" class="form-check-input" name="remember" id="exampleCheck1">
