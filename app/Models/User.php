@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use Auth;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -50,7 +50,7 @@ class User extends Authenticatable
 
         static::creating(function ($user)
         {
-            $user->activation_token = str_random(30);
+            $user->activation_token = str_random(10);
         });
     }
 
@@ -77,7 +77,7 @@ class User extends Authenticatable
 
     public function isFollowing($user_id)
     {
-        return $this->followings->contains($user_ids);
+        return $this->followings->contains($user_id);
     }
 
     public function follow($user_ids)

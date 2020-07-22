@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-
+use Auth;
 class FollowersController extends Controller
 {
-    public function follow(User $currentUser, User $user)
+
+    public function __construct()
     {
-        return $currentUser->id !== $user->id;
+        $this->middleware('auth');
     }
 
     public function store(User $user)
